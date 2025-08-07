@@ -1,0 +1,2274 @@
+<!doctype html>
+
+<html lang="en" class="layout-menu-fixed layout-compact"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>SAPD Tools</title>
+
+    <meta name="description" content />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/logo.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet" />
+
+    <link rel="stylesheet" href="../assets/vendor/fonts/iconify-icons.css" />
+    <style>
+    .icon-card {
+      transition: box-shadow 0.3s ease;
+      /* transisi halus saat hover */
+    }
+
+    .icon-card:hover {
+      box-shadow: 0 0 10px rgba(0, 123, 255, 0.226) !important;
+      /* bayangan biru saat hover */
+    }
+  </style>
+
+    <!-- Core CSS -->
+    <!-- build:css assets/vendor/css/theme.css  -->
+
+    <link rel="stylesheet" href="../assets/vendor/css/core.css" />
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+
+    <link rel="stylesheet"
+      href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+      <style>
+        .skeleton-loader {
+          width: 300px;
+          height: 200px;
+          border-radius: 6px;
+          background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+          background-size: 200% 100%;
+          animation: loading 1.5s infinite;
+          margin: 0 auto;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        @keyframes loading {
+          0% {
+            background-position: 200% 0;
+          }
+          100% {
+            background-position: -200% 0;
+          }
+        }
+
+      </style>
+
+    <!-- endbuild -->
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="../assets/vendor/js/helpers.js"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+
+    <script src="../assets/js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+
+        <aside id="layout-menu"
+          class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="dashboard.html" class="app-brand-link">
+              <span class="app-brand-logo demo">
+                <span class="text-primary">
+                  <img src="../assets/img/logo.png" style="width: 2.3rem;">
+                </span>
+              </span>
+              <span class="app-brand-text demo menu-text  ms-2">SAPD
+                Tools</span>
+            </a>
+
+            <a href="javascript:void(0);"
+              class="layout-menu-toggle menu-link text-large ms-auto">
+              <i class="bx bx-chevron-left d-block d-xl-none align-middle"></i>
+            </a>
+          </div>
+
+          <div class="menu-divider mt-0"></div>
+
+          <div class="menu-inner-shadow"></div>
+
+          <ul class="menu-inner py-1">
+            <!-- Dashboards -->
+            <li class="menu-item">
+              <a href="dashboard.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-smile"></i>
+                <div class="text-truncate"
+                  data-i18n="Dashboards">Dashboard</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="penal.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div class="text-truncate" data-i18n="Dashboards">Penal
+                  Code</div>
+              </a>
+            </li>
+
+            <li class="menu-item active open">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-support"></i>
+                <div class="text-truncate" data-i18n="Public Service">Public
+                  Tools</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item active">
+                  <a href="recruitment.html" class="menu-link">
+                    <div class="text-truncate"
+                      data-i18n="Recruitment BBCode">Recruitment BBCode</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+          </aside>
+          <!-- / Menu -->
+
+          <!-- Layout container -->
+          <div class="layout-page">
+            <!-- Navbar -->
+
+            <nav
+              class="layout-navbar container-xxl navbar-detached navbar navbar-expand-xl align-items-center bg-navbar-theme"
+              id="layout-navbar">
+              <div
+                class="layout-menu-toggle navbar-nav align-items-xl-center me-4 me-xl-0 d-xl-none">
+                <a class="nav-item nav-link px-0 me-xl-6"
+                  href="javascript:void(0)">
+                  <i class="icon-base bx bx-menu icon-md"></i>
+                </a>
+              </div>
+
+              <div
+                class="navbar-nav-right d-flex align-items-center justify-content-end"
+                id="navbar-collapse">
+                <div class="navbar-nav align-items-center me-auto">
+                  Recruitment BBCode Generator
+                </div>
+
+                <ul class="navbar-nav flex-row align-items-center ms-md-auto">
+                  <!-- Place this tag where you want the button to render. -->
+                  <li class="nav-item lh-1 me-4">
+                  </li>
+
+                  <!-- User -->
+                  <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                    <a class="nav-link dropdown-toggle hide-arrow p-0"
+                      href="javascript:void(0);" data-bs-toggle="dropdown">
+                      <div class="avatar avatar-online">
+                        <img src="../assets/img/avatars/1.png" alt
+                          class="w-px-40 h-auto rounded-circle" />
+                      </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <div class="d-flex">
+                            <div class="flex-shrink-0 me-3">
+                              <div class="avatar avatar-online">
+                                <img src="../assets/img/avatars/1.png" alt
+                                  class="w-px-40 h-auto rounded-circle" />
+                              </div>
+                            </div>
+                            <div class="flex-grow-1">
+                              <h6 class="mb-0">SAPD Tools Visitor</h6>
+                              <small class="text-body-secondary">Visitor</small>
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <!--/ User -->
+                </ul>
+              </div>
+            </nav>
+
+            <!-- / Navbar -->
+
+            <!-- Content wrapper -->
+            <div class="content-wrapper">
+              <!-- Content -->
+              <div class="container-xxl flex-grow-1 container-p-y">
+                <div class="container mt-5">
+                  <div class="card shadow-sm">
+                    <div class="card-body">
+                      <!-- SAPD Application Form HTML using Bootstrap 5 -->
+                      <form id="bbcodeForm">
+
+                        <div>
+                          <div class=" fw-semibold">I. PERSONAL
+                            INFORMATION</div>
+                          <div class>
+                            <div class="row g-3">
+                              <!-- Full Name -->
+                              <div class="col-md-4">
+                                <label for="firstname"
+                                  class="form-label">Firstname</label>
+                                <input type="text" id="firstname"
+                                  class="form-control"
+                                  placeholder="Ex: Maverick">
+                              </div>
+                              <div class="col-md-4">
+                                <label for="middlename"
+                                  class="form-label">Middle</label>
+                                <input type="text" id="middlename"
+                                  class="form-control" placeholder="(Optional) Ex: Howard">
+                              </div>
+                              <div class="col-md-4">
+                                <label for="lastname"
+                                  class="form-label">Lastname</label>
+                                <input type="text" id="lastname"
+                                  class="form-control"
+                                  placeholder="Ex: Vincenzo">
+                              </div>
+
+                              <!-- Alias -->
+                              <div class="col-md-6">
+                                <label for="alias" class="form-label">Alias /
+                                  Other Name</label>
+                                <input type="text" id="alias"
+                                  class="form-control" placeholder="(Optional) Ex: Mave">
+                              </div>
+
+                              <!-- Gender -->
+                              <div class="col-md-6">
+                                <label class="form-label">Gender</label>
+                                <div class="d-flex gap-3 mt-1">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="gender" id="male">
+                                    <label class="form-check-label"
+                                      for="male">Male</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="gender" id="female">
+                                    <label class="form-check-label"
+                                      for="female">Female</label>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- Age -->
+                              <div class="col-md-6">
+                                <label for="age" class="form-label">Age</label>
+                                <input type="text" id="age"
+                                  class="form-control" placeholder="Ex: 21">
+                              </div>
+
+                              <!-- Marital Status -->
+                              <div class="col-md-6">
+                                <label class="form-label">Marital Status</label>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-check">
+                                      <input class="form-check-input"
+                                        type="radio" name="marital"
+                                        id="married">
+                                      <label class="form-check-label"
+                                        for="married">Married</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input"
+                                        type="radio" name="marital"
+                                        id="commonlaw">
+                                      <label class="form-check-label"
+                                        for="commonlaw">Common-Law</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input"
+                                        type="radio" name="marital"
+                                        id="separated">
+                                      <label class="form-check-label"
+                                        for="separated">Separated</label>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-check">
+                                      <input class="form-check-input"
+                                        type="radio" name="marital"
+                                        id="divorced">
+                                      <label class="form-check-label"
+                                        for="divorced">Divorced</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input"
+                                        type="radio" name="marital"
+                                        id="widowed">
+                                      <label class="form-check-label"
+                                        for="widowed">Widowed</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input"
+                                        type="radio" name="marital" id="single">
+                                      <label class="form-check-label"
+                                        for="single">Single</label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- Birthplace & Birthdate -->
+                              <div class="col-md-6">
+                                <label for="birthplace" class="form-label">Birth
+                                  Place</label>
+                                <input type="text" id="birthplace"
+                                  class="form-control" placeholder="Ex: Italy">
+                              </div>
+                              <div class="col-md-6">
+                                <label for="birthdate" class="form-label">Birth
+                                  Date</label>
+                                <input type="date" id="birthdate"
+                                  class="form-control"
+                                  placeholder="Ex: 13 November 2003">
+                              </div>
+
+                              <!-- Contact & Email -->
+                              <div class="col-md-6">
+                                <label for="contact" class="form-label">Contact
+                                  Number</label>
+                                <input type="text" id="contact"
+                                  class="form-control"
+                                  placeholder="Ex: 5-3-8-7-9">
+                              </div>
+                              <div class="col-md-6">
+                                <label for="email" class="form-label">Email
+                                  Address</label>
+                                <input type="email" id="email"
+                                  class="form-control"
+                                  placeholder="Ex: mave.aa@hotmail.com">
+                              </div>
+
+                              <!-- Residence -->
+                              <div class="col-md-6">
+                                <label for="residence-street"
+                                  class="form-label">Street Address</label>
+                                <input type="text" id="residence-street"
+                                  class="form-control"
+                                  placeholder="Ex: 1nd Idlewood Complex">
+                              </div>
+                              <div class="col-md-6">
+                                <label for="residence-city"
+                                  class="form-label">City / State</label>
+                                <input type="text" id="residence-city"
+                                  class="form-control"
+                                  placeholder="Ex: Los Santos">
+                              </div>
+
+                              <!-- Physical Description -->
+                              <div class="col-md-3">
+                                <label for="height"
+                                  class="form-label">Height</label>
+                                <input type="text" id="height"
+                                  class="form-control" placeholder="Ex: 170 cm">
+                              </div>
+                              <div class="col-md-3">
+                                <label for="weight"
+                                  class="form-label">Weight</label>
+                                <input type="text" id="weight"
+                                  class="form-control" placeholder="Ex: 80 kg">
+                              </div>
+                              <div class="col-md-3">
+                                <label for="haircolor" class="form-label">Hair
+                                  Color</label>
+                                <input type="text" id="haircolor"
+                                  class="form-control" placeholder="Ex: Cream">
+                              </div>
+                              <div class="col-md-3">
+                                <label for="eyecolor" class="form-label">Eye
+                                  Color</label>
+                                <input type="text" id="eyecolor"
+                                  class="form-control" placeholder="Ex: Blue">
+                              </div>
+
+                              <!-- Ethnic Group -->
+                              <div class="col-12">
+                                <label class="form-label">Ethnic Group /
+                                  Race</label>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-check">
+                                      <input class="form-check-input"
+                                        type="radio" name="ethnicity"
+                                        id="african">
+                                      <label class="form-check-label"
+                                        for="african">African-American</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input"
+                                        type="radio" name="ethnicity"
+                                        id="hispanic">
+                                      <label class="form-check-label"
+                                        for="hispanic">Hispanic</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input"
+                                        type="radio" name="ethnicity"
+                                        id="asian">
+                                      <label class="form-check-label"
+                                        for="asian">Asian/Pacific
+                                        Islander</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input"
+                                        type="radio" name="ethnicity"
+                                        id="caucasian">
+                                      <label class="form-check-label"
+                                        for="caucasian">Caucasian</label>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-check">
+                                      <input class="form-check-input"
+                                        type="radio" name="ethnicity"
+                                        id="americanindian">
+                                      <label class="form-check-label"
+                                        for="americanindian">American
+                                        Indian</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input"
+                                        type="radio" name="ethnicity"
+                                        id="filipino">
+                                      <label class="form-check-label"
+                                        for="filipino">Filipino</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input"
+                                        type="radio" name="ethnicity"
+                                        id="middleeastern">
+                                      <label class="form-check-label"
+                                        for="middleeastern">Middle
+                                        Eastern</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input"
+                                        type="radio" name="ethnicity"
+                                        id="otherethnic">
+                                      <label class="form-check-label"
+                                        for="otherethnic">Other</label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div> <!-- /.row -->
+                          </div> <!-- /.card-body -->
+                        </div>
+
+                        <div style="margin: 8vh 0 4vh;">
+                          <div class="fw-semibold">II. EDUCATIONAL & BACKGROUND
+                            INFORMATION</div>
+                          <div class="row g-3 mt-2">
+
+                            <!-- Highest Level of Education -->
+                            <div class="col-12">
+                              <label class="form-label">Highest Level of
+                                Education</label>
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="education" id="highschool">
+                                    <label class="form-check-label"
+                                      for="highschool">High School, or/and
+                                      GED</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="education" id="somecollege">
+                                    <label class="form-check-label"
+                                      for="somecollege">Some College</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="education" id="associate">
+                                    <label class="form-check-label"
+                                      for="associate">Associate's Degree</label>
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="education" id="bachelor">
+                                    <label class="form-check-label"
+                                      for="bachelor">Bachelor's Degree</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="education" id="graduate">
+                                    <label class="form-check-label"
+                                      for="graduate">Graduate Degree</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="education" id="noneedu">
+                                    <label class="form-check-label"
+                                      for="noneedu">None of the statements apply
+                                      to me</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- College Major -->
+                            <div class="col-12">
+                              <label class="form-label">If you have attended
+                                college, what was your major course of
+                                study?</label>
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="major" id="criminal">
+                                    <label class="form-check-label"
+                                      for="criminal">Criminal Justice</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="major" id="business">
+                                    <label class="form-check-label"
+                                      for="business">Business/Economics</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="major" id="general">
+                                    <label class="form-check-label"
+                                      for="general">General Ed/Undecided</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="major" id="engineering">
+                                    <label class="form-check-label"
+                                      for="engineering">Engineering/Computer</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="major" id="communication">
+                                    <label class="form-check-label"
+                                      for="communication">Communications</label>
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="major" id="psychology">
+                                    <label class="form-check-label"
+                                      for="psychology">Psychology/Sociology</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="major" id="liberal">
+                                    <label class="form-check-label"
+                                      for="liberal">Liberal Arts</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="major" id="education">
+                                    <label class="form-check-label"
+                                      for="education">Education</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="major" id="science">
+                                    <label class="form-check-label"
+                                      for="science">Science</label>
+                                  </div>
+                                  <div
+                                    class="form-check d-flex align-items-center gap-2">
+                                    <input class="form-check-input" type="radio"
+                                      name="major" id="othermajor">
+                                    <label class="form-check-label"
+                                      for="othermajor">Other:</label>
+                                    <input type="text"
+                                      class="form-control form-control-sm w-50"
+                                      placeholder="Ex: Law">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Languages -->
+                            <div class="col-12">
+                              <label class="form-label">What languages beside
+                                English do you speak fluently?</label>
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="language" id="spanish">
+                                    <label class="form-check-label"
+                                      for="spanish">Spanish</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="language" id="russian">
+                                    <label class="form-check-label"
+                                      for="russian">Russian</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="language" id="chinese">
+                                    <label class="form-check-label"
+                                      for="chinese">Chinese</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="language" id="japanese">
+                                    <label class="form-check-label"
+                                      for="japanese">Japanese</label>
+                                  </div>
+                                  <div
+                                    class="form-check d-flex align-items-center gap-2">
+                                    <input class="form-check-input" type="radio"
+                                      name="language" id="otherlang">
+                                    <label class="form-check-label"
+                                      for="otherlang">Other:</label>
+                                    <input type="text"
+                                      class="form-control form-control-sm w-50"
+                                      placeholder="Ex: Italian">
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="language" id="none">
+                                    <label class="form-check-label"
+                                      for="none">None</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Criminal Record -->
+                            <div class="col-12">
+                              <label class="form-label">Mark one of the
+                                following that applies to the level of severity
+                                you had</label>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="criminal" id="cleanrecord">
+                                    <label class="form-check-label"
+                                      for="cleanrecord">I have a clean/no
+                                      criminal record</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="criminal" id="ticket">
+                                    <label class="form-check-label"
+                                      for="ticket">I have received a traffic
+                                      ticket/citation from SAPD that I have
+                                      paid</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="criminal" id="misdemeanor">
+                                    <label class="form-check-label"
+                                      for="misdemeanor">I have been arrested by
+                                      SAPD on Misdemeanor charges which I have
+                                      pled Guilty/No Contest</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="criminal" id="felony">
+                                    <label class="form-check-label"
+                                      for="felony">I have been arrested by SAPD
+                                      on Felony charges which I have pled
+                                      Guilty/No Contest</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div style="margin: 8vh 0 4vh;">
+                          <div class="fw-semibold">III. LICENSES
+                            INFORMATION</div>
+                          <div class="row g-3 mt-2">
+
+                            <!-- 3.1 Valid Licenses -->
+                            <div class="col-12">
+                              <label class="form-label">3.1) Please check the
+                                valid licenses you possess</label>
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <div class="form-check">
+                                    <input class="form-check-input"
+                                      type="checkbox" id="licenseDriving"
+                                      name="licenses">
+                                    <label class="form-check-label"
+                                      for="licenseDriving">Driving
+                                      License</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input"
+                                      type="checkbox" id="licenseFlying"
+                                      name="licenses">
+                                    <label class="form-check-label"
+                                      for="licenseFlying">Flying License</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input"
+                                      type="checkbox" id="licenseFirearms"
+                                      name="licenses">
+                                    <label class="form-check-label"
+                                      for="licenseFirearms">Firearms
+                                      License</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- 3.2 License Suspended/Revoked -->
+                            <div class="col-12">
+                              <label class="form-label">3.2) Have or has any of
+                                your license been suspended/revoked?</label>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="licenseStatus" id="licenseYes"
+                                      value="yes">
+                                    <label class="form-check-label"
+                                      for="licenseYes">Yes, License
+                                      suspended/revoked:</label>
+                                  </div>
+                                  <input type="text"
+                                    class="form-control form-control-sm mt-1"
+                                    placeholder="Ex: Driving License" />
+                                </div>
+                                <div class="col-md-6 mt-md-0 mt-3">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="licenseStatus" id="licenseNo"
+                                      value="no">
+                                    <label class="form-check-label"
+                                      for="licenseNo">No</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div style="margin: 8vh 0 4vh;">
+                          <div class="fw-semibold">IV. EMPLOYMENT & EXPERIENCE
+                            SECTION</div>
+                          <div class="row g-3 mt-2">
+
+                            <!-- 4.1 Name of Employer -->
+                            <div class="col-md-6">
+                              <label class="form-label" for="employerName">4.1)
+                                Name of Employer</label>
+                              <input type="text" class="form-control"
+                                id="employerName"
+                                placeholder="Ex: San Andreas Police Department" />
+                            </div>
+
+                            <!-- 4.2 Type of Employment -->
+                            <div class="col-md-6">
+                              <label class="form-label"
+                                for="employmentType">4.2) Type of
+                                Employment</label>
+                              <input type="text" class="form-control"
+                                id="employmentType"
+                                placeholder="Ex: Government, Private, Freelance" />
+                            </div>
+
+                            <!-- 4.3 Length of Employment -->
+                            <div class="col-md-6">
+                              <label class="form-label"
+                                for="employmentLength">4.3) Length of
+                                Employment</label>
+                              <input type="text" class="form-control"
+                                id="employmentLength"
+                                placeholder="Ex: 1 Year, 6 Months" />
+                            </div>
+
+                            <!-- 4.4 Employer -->
+                            <div class="col-md-6">
+                              <label class="form-label"
+                                for="employerPerson">4.4) Employer</label>
+                              <input type="text" class="form-control"
+                                id="employerPerson"
+                                placeholder="Ex: Chief John Carter" />
+                            </div>
+
+                            <!-- 4.5 Rank/Position -->
+                            <div class="col-md-6">
+                              <label class="form-label" for="position">4.5)
+                                Rank/Position, if applicable</label>
+                              <input type="text" class="form-control"
+                                id="position"
+                                placeholder="Ex: Officer I, Manager, Supervisor" />
+                            </div>
+
+                            <!-- 4.6 Duties / Jobdesk -->
+                            <div class="col-12">
+                              <label class="form-label" for="duties">4.6) Duties
+                                / Jobdesk</label>
+                              <textarea class="form-control" id="duties"
+                                rows="3"
+                                placeholder="Ex: Patrolling, Handling customer complaints, etc."></textarea>
+                            </div>
+
+                            <!-- 4.7 Have you ever been disciplined at work? -->
+                            <div class="col-12">
+                              <label class="form-label">4.7) Have you ever been
+                                disciplined at work?
+                                <small class="text-muted d-block">(This includes
+                                  warnings, suspension, etc)</small>
+                              </label>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="disciplineWork" id="disciplineYes"
+                                      value="yes">
+                                    <label class="form-check-label"
+                                      for="disciplineYes">Yes,
+                                      explanation:</label>
+                                  </div>
+                                  <input type="text"
+                                    class="form-control form-control-sm mt-1"
+                                    id="disciplineReason"
+                                    placeholder="Ex: Verbal warning for tardiness" />
+                                </div>
+                                <div class="col-md-6 mt-md-0 mt-3">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="disciplineWork" id="disciplineNo"
+                                      value="no">
+                                    <label class="form-check-label"
+                                      for="disciplineNo">No</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div style="margin: 8vh 0 4vh;">
+                          <div class="fw-semibold">V. LEGALITY INFORMATION</div>
+                          <div class="row g-3 mt-1">
+
+                            <!-- 5.1 Ever been detained/arrested/etc -->
+                            <div class="col-12">
+                              <label class="form-label">
+                                Have you EVER been detained, arrested, indicted,
+                                or convicted of any misdemeanor or felony
+                                offense?
+                              </label>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="detainedStatus" id="detainedYes"
+                                      value="yes" />
+                                    <label class="form-check-label"
+                                      for="detainedYes">Yes,
+                                      explanation:</label>
+                                  </div>
+                                  <div class="mt-1">
+                                    <input type="text"
+                                      class="form-control form-control-sm"
+                                      name="detainedExplanation" id="detainedExplanation"
+                                      placeholder="Ex: Detained in 2022 for investigation on a burglary case." />
+                                  </div>
+                                </div>
+                                <div class="col-md-6 mt-md-0 mt-3">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="detainedStatus" id="detainedNo"
+                                      value="no" />
+                                    <label class="form-check-label"
+                                      for="detainedNo">No</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- 5.2 Police ever called you -->
+                            <div class="col-12">
+                              <label class="form-label">
+                                Have the police ever called you for any reason?
+                              </label>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="policeCall" id="policeCallYes"
+                                      value="yes" />
+                                    <label class="form-check-label"
+                                      for="policeCallYes">Yes,
+                                      explanation:</label>
+                                  </div>
+                                  <div class="mt-1">
+                                    <input type="text"
+                                      class="form-control form-control-sm"
+                                      name="policeCallExplanation"
+                                      id="policeCallExplanation"
+                                      placeholder="Ex: Called as a witness in a hit-and-run case." />
+                                  </div>
+                                </div>
+                                <div class="col-md-6 mt-md-0 mt-3">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="policeCall" id="policeCallNo"
+                                      value="no" />
+                                    <label class="form-check-label"
+                                      for="policeCallNo">No</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- 5.3 Drug Usage -->
+                            <div class="col-12">
+                              <label class="form-label">
+                                Have you EVER used drugs?
+                              </label>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="drugUse" id="drugYes" value="yes" />
+                                    <label class="form-check-label"
+                                      for="drugYes">Yes, explanation:</label>
+                                  </div>
+                                  <div class="mt-1">
+                                    <input type="text"
+                                      class="form-control form-control-sm"
+                                      name="drugUseExplanation"
+                                      id="drugUseExplanation"
+                                      placeholder="Ex: Tried marijuana once in college." />
+                                  </div>
+                                </div>
+                                <div class="col-md-6 mt-md-0 mt-3">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="drugUse" id="drugNo" value="no" />
+                                    <label class="form-check-label"
+                                      for="drugNo">No</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- 5.4 Certificate of Medical Record -->
+                            <div class="col-12 mb-3">
+                              <label class="form-label">
+                                Do you have a Certificate of Medical Record
+                                (CMR)?
+                              </label>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="hasCmr" id="cmrYes" value="yes">
+                                    <label class="form-check-label"
+                                      for="cmrYes">
+                                      Yes, link:
+                                    </label>
+                                  </div>
+                                  <div class="mt-1">
+                                    <input type="text"
+                                      class="form-control form-control-sm"
+                                      id="cmrUrlInput" name="cmrUrl"
+                                      placeholder="Ex: https://link-to-your-cmr.com" />
+                                  </div>
+                                </div>
+                                <div class="col-md-6 mt-md-0 mt-3">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="hasCmr" id="cmrNo" value="no">
+                                    <label class="form-check-label" for="cmrNo">
+                                      Didn't Have
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- 5.5 Certificate of Good Conduct -->
+                            <div class="col-12 mb-3">
+                              <label class="form-label">
+                                Do you have a Certificate of Good Conduct (CGC)?
+                              </label>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="hasCgc" id="cgcYes" value="yes">
+                                    <label class="form-check-label"
+                                      for="cgcYes">
+                                      Yes, link:
+                                    </label>
+                                  </div>
+                                  <div class="mt-1">
+                                    <input type="text"
+                                      class="form-control form-control-sm"
+                                      id="cgcUrlInput" name="cgcUrl"
+                                      placeholder="Ex: https://link-to-your-cgc.com" />
+                                  </div>
+                                </div>
+                                <div class="col-md-6 mt-md-0 mt-3">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="hasCgc" id="cgcNo" value="no">
+                                    <label class="form-check-label" for="cgcNo">
+                                      Didn't Have
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div style="margin: 8vh 0 4vh;">
+                          <div class="fw-semibold">VI. OUT OF CHARACTER
+                            INFORMATION</div>
+                          <div class="row g-3 mt-1">
+
+                            <!-- 6.1 Legacy UCP Account -->
+                            <div class="col-12 mb-3">
+                              <label class="form-label">Legacy UCP
+                                Account:</label>
+                              <input type="text"
+                                class="form-control form-control-sm"
+                                name="ucpAccount"
+                                id="ucpAccount"
+                                placeholder="Ex: FRSS" />
+                            </div>
+
+                            <!-- 6.2 Real Life Name -->
+                            <div class="col-12 mb-3">
+                              <label class="form-label">Real Life Name:</label>
+                              <input type="text"
+                                class="form-control form-control-sm"
+                                name="realName"
+                                id="realName"
+                                placeholder="Ex: Renjiro Faris S." />
+                            </div>
+
+                            <!-- 6.3 Real Life Age -->
+                            <div class="col-12 mb-3">
+                              <label class="form-label">Real Life Age:</label>
+                              <input type="number"
+                                class="form-control form-control-sm"
+                                name="realAge"
+                                id="realAge"
+                                placeholder="Ex: 15" />
+                            </div>
+
+                            <!-- 6.4 Real Life City -->
+                            <div class="col-12 mb-3">
+                              <label class="form-label">Real Life City:</label>
+                              <input type="text"
+                                class="form-control form-control-sm"
+                                name="realCity"
+                                id="realCity"
+                                placeholder="Ex: Bekasi City" />
+                            </div>
+
+                            <!-- 6.5 Discord ID -->
+                            <div class="col-12 mb-3">
+                              <label class="form-label">Discord ID:</label>
+                              <input type="text"
+                                class="form-control form-control-sm"
+                                name="discordId"
+                                id="discordId"
+                                placeholder="Ex: 942069162396766218" />
+                            </div>
+
+                            <!-- 6.6 Duration playing Legacy -->
+                            <div class="col-12 mb-3">
+                              <label class="form-label">How long have you been
+                                playing Legacy?</label>
+                              <input type="text"
+                                class="form-control form-control-sm"
+                                name="legacyDuration"
+                                id="legacyDuration"
+                                placeholder="Ex: 2 more weeks" />
+                            </div>
+
+                            <!-- 6.7 Where do you play Legacy -->
+                            <div class="col-12 mb-3">
+                              <label class="form-label">Where do you play
+                                Legacy?</label>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox"
+                                  name="playPlace[]" id="playHome"
+                                  value="Home" />
+                                <label class="form-check-label"
+                                  for="playHome">Home</label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox"
+                                  name="playPlace[]" id="playCafe"
+                                  value="Internet Cafe" />
+                                <label class="form-check-label"
+                                  for="playCafe">Internet Cafe</label>
+                              </div>
+                              <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox"
+                                  name="playPlace[]" id="playOther"
+                                  value="Other" />
+                                <label class="form-check-label"
+                                  for="playOther">Other:</label>
+                                <input type="text"
+                                  class="form-control form-control-sm mt-1"
+                                  name="playPlaceOther"
+                                  id="playPlaceOther"
+                                  placeholder="Ex: School Computer Lab" />
+                              </div>
+                            </div>
+
+                            <!-- 6.8 Previous Character Names -->
+                            <div class="col-12 mb-3">
+                              <label class="form-label">List all of your
+                                previous character names in every
+                                account:</label>
+                              <div class="mb-2">
+                                <button type="button"
+                                  class="btn btn-sm btn-outline-primary"
+                                  id="add-character">+ Add
+                                  Character</button>
+                              </div>
+                              <div id="character-list">
+                                <div class="input-group mb-2 character-entry">
+                                  <input type="text" name="previousCharacters[]"
+                                    class="form-control form-control-sm"
+                                    placeholder="Ex: FRSS ─ Maverick Vincenzo">
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- 6.9 Admin Record Screenshot -->
+                            <div class="col-12 mb-3">
+                              <label class="form-label">
+                                Upload unedited screenshots of Admin Record
+                                (/mywarns):
+                              </label>
+
+                              <!-- Preview Gambar di Tengah -->
+                              <div class="d-flex justify-content-center align-items-center">
+                                <img id="adminRecordPreview" src style="max-width: 300px; max-height: 200px; display: none; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);" />
+                                <div id="adminRecordSkeleton" class="skeleton-loader" style="display: none;"></div>
+                              </div>
+
+
+                              <!-- Hidden input buat nyimpen URL -->
+                              <input type="hidden" id="adminRecordUrl"
+                                name="adminRecordUrl" />
+
+                              <!-- File Input (Hidden) -->
+                              <input type="file" id="adminRecordFile"
+                                accept="image/*" hidden />
+
+                              <!-- Tombol Pilih File dan Upload -->
+                              <div class="d-flex gap-2 mt-3">
+                                <button
+                                  class="btn btn-outline-secondary flex-fill"
+                                  type="button"
+                                  onclick="document.getElementById('adminRecordFile').click()">Pilih
+                                  File</button>
+                                <button class="btn btn-primary flex-fill"
+                                  type="button"
+                                  onclick="uploadImgur('adminRecordFile', 'adminRecordUrl', 'adminRecordPreview')">Upload</button>
+                              </div>
+                            </div>
+
+                            <!-- 6.10 Stats Screenshot -->
+                            <div class="col-12 mb-3">
+                              <label class="form-label">Upload unedited /stats
+                                screenshots:</label>
+
+                              <!-- Preview Gambar -->
+                              <div class="d-flex justify-content-center align-items-center mb-3">
+                                <img id="statsPreview" src style="max-width: 300px; max-height: 200px; display: none; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);" />
+                                <div id="statsSkeleton" class="skeleton-loader" style="display: none;"></div>
+                              </div>
+
+
+                              <!-- Hidden input buat nyimpen URL -->
+                              <input type="hidden" id="statsUrl"
+                                name="statsUrl" />
+
+                              <!-- File input -->
+                              <input type="file" id="statsFile" accept="image/*"
+                                hidden />
+
+                              <!-- Tombol Pilih File & Upload -->
+                              <div class="d-flex gap-2 mt-3">
+                                <button
+                                  class="btn btn-outline-secondary flex-fill"
+                                  type="button"
+                                  onclick="document.getElementById('statsFile').click()">Pilih
+                                  File</button>
+                                <button class="btn btn-primary flex-fill"
+                                  type="button"
+                                  onclick="uploadImgur('statsFile', 'statsUrl', 'statsPreview')">Upload</button>
+                              </div>
+                            </div>
+
+                            <!-- 6.11 SAPD Experience -->
+                            <div class="col-12 mb-3">
+                              <label class="form-label">Have you ever been in
+                                the SAPD previously?</label>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="sapdExperience" id="sapdYes"
+                                      value="yes">
+                                    <label class="form-check-label"
+                                      for="sapdYes">Yes, details:</label>
+                                  </div>
+                                  <div class="mt-1">
+                                    <input type="text"
+                                      class="form-control form-control-sm"
+                                      name="sapdExperienceDetails"
+                                      id="sapdExperienceDetails"
+                                      placeholder="Ex: Maverick Vincenzo - Left in 2023 due to inactivity." />
+                                  </div>
+                                </div>
+                                <div class="col-md-6 mt-md-0 mt-3">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="sapdExperience" id="sapdNo"
+                                      value="no">
+                                    <label class="form-check-label"
+                                      for="sapdNo">No</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- 6.12 Faction Experience -->
+                            <div class="col-12 mb-3">
+                              <label class="form-label">Have you ever been in
+                                any faction/families before?</label>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="factionExperience" id="factionYes"
+                                      value="yes">
+                                    <label class="form-check-label"
+                                      for="factionYes">Yes, details:</label>
+                                  </div>
+                                  <div class="mt-1">
+                                    <textarea
+                                      class="form-control form-control-sm"
+                                      id="factionExperienceDetails"
+                                      name="factionExperienceDetails" rows="3"
+                                      placeholder="Ex:
+- Yakuza ─ Renjiro Faris ─ Left 2024-01-10 ─ Reason: Disband
+- Hitman ─ John Doe ─ Left 2023-08-25 ─ Reason: Resigned"></textarea>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 mt-md-0 mt-3">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio"
+                                      name="factionExperience" id="factionNo"
+                                      value="no">
+                                    <label class="form-check-label"
+                                      for="factionNo">No</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div style="margin: 8vh 0 4vh;">
+                          <div class="fw-semibold">VII. ADDITIONAL INFORMATION
+                            SECTION</div>
+                          <div class="row g-3 mt-2">
+
+                            <!-- 7.1 Additional Information -->
+                            <div class="col-12">
+                              <label class="form-label">
+                                7.1) If you have any additional information or
+                                explanation about your record, here's your
+                                space.
+                              </label>
+                              <textarea class="form-control" rows="4"
+                                name="recordExplain" id="recordExplain"
+                                placeholder="Ex: Any clarification you'd like to add. More thing to make us consider you more. Or explaining how you been banned before."></textarea>
+                            </div>
+
+                          </div>
+                        </div>
+                        <div style="margin: 8vh 0 4vh;">
+                          <label class="form-label">Subject</label>
+                          <textarea id="subject" class="form-control" rows="1"
+                            readonly></textarea>
+                          <button class="btn btn-primary mt-2" type="button"
+                            onclick="copySubject()">
+                            Copy</button>
+                        </div>
+
+                        <div style="margin: 0 0 3vh 0;">
+                          <label class="form-label">BBCode</label>
+                          <textarea id="result" class="form-control" rows="10"
+                            readonly></textarea>
+                          <button class="btn btn-primary mt-2" type="button"
+                            onclick="validateAndGenerate()">Generate &
+                            Copy</button>
+                        </div>
+
+                      </form>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl">
+                <div
+                  class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
+                  <div class="mb-2 mb-md-0">
+                    &#169;
+                    SAPD Public Information and Media
+                    <script>
+                  document.write(new Date().getFullYear());
+                </script>
+                  </div>
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+
+    <!-- Core JS -->
+
+    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+
+    <script src="../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../assets/vendor/js/bootstrap.js"></script>
+
+    <script
+      src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="../assets/vendor/js/menu.js"></script>
+
+    <script>
+      document.querySelectorAll('input[type="radio"]').forEach((el) => {
+        if (!el.value) {
+          el.value = el.id || el.name; // fallback kalau gak ada id
+        }
+      });
+      document.querySelectorAll('input[type="checkbox"]').forEach((el) => {
+        if (!el.value) {
+          el.value = el.id || el.name; // fallback kalau gak ada id
+        }
+      });
+    </script>
+
+    <script>
+    $(document).ready(function () {
+      function updateRemoveButtons() {
+        const total = $('#character-list .character-entry').length;
+        $('#character-list .remove-character').remove(); // remove all first
+        if (total > 1) {
+          // Tambahkan tombol hapus hanya jika jumlah input > 1
+          $('#character-list .character-entry').each(function () {
+            if ($(this).find('.remove-character').length === 0) {
+              $(this).append(`
+              <button type="button" class="btn btn-sm btn-outline-danger ms-2 remove-character">🗑</button>
+            `);
+            }
+          });
+        }
+      }
+
+      $('#add-character').click(function () {
+        const newInput = `
+        <div class="input-group mb-2 character-entry">
+          <input type="text" name="previousCharacters[]" class="form-control form-control-sm" placeholder="Ex: UCPName ─ Another Character">
+        </div>
+      `;
+        $('#character-list').append(newInput);
+        updateRemoveButtons();
+      });
+
+      // Delegated remove handler
+      $('#character-list').on('click', '.remove-character', function () {
+        $(this).closest('.character-entry').remove();
+        updateRemoveButtons();
+      });
+
+      // Initial call
+      updateRemoveButtons();
+    });
+  </script>
+    <script>
+      async function uploadImgur(fileInputId, hiddenInputId, previewImgId) {
+        const fileInput = document.getElementById(fileInputId);
+        const hiddenInput = document.getElementById(hiddenInputId);
+        const previewImg = document.getElementById(previewImgId);
+        const skeletonLoader = document.getElementById(previewImgId.replace("Preview", "Skeleton"));
+
+        if (!fileInput.files || fileInput.files.length === 0) {
+          alert("Pilih file terlebih dahulu.");
+          return;
+        }
+
+        const imageFile = fileInput.files[0];
+        const formData = new FormData();
+        formData.append("image", imageFile);
+
+        // Tampilkan skeleton, sembunyikan preview
+        if (skeletonLoader) skeletonLoader.style.display = "block";
+        if (previewImg) previewImg.style.display = "none";
+
+        try {
+          const response = await fetch("https://api.imgur.com/3/image", {
+            method: "POST",
+            headers: {
+              Authorization: "Client-ID 894beeef6cd80f4",
+            },
+            body: formData,
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            const imageUrl = data.data.link;
+
+            hiddenInput.value = imageUrl;
+
+            if (previewImg) {
+              previewImg.src = imageUrl;
+              previewImg.style.display = "block";
+            }
+
+            alert("Upload berhasil!");
+          } else {
+            console.error(data);
+            alert("Upload gagal. Silakan coba lagi.");
+          }
+        } catch (error) {
+          console.error(error);
+          alert("Terjadi kesalahan saat upload.");
+        } finally {
+          if (skeletonLoader) skeletonLoader.style.display = "none";
+        }
+      }
+
+    </script>
+
+    <script>
+function generateBBCode() {
+      const get = (id) => {
+        const val = document.getElementById(id)?.value.trim();
+        if (!val) return "N/A";
+        return val.charAt(0).toUpperCase() + val.slice(1);
+      };
+
+      const getCheckedValue = (name) => {
+        const checked = document.querySelector(`input[name="${name}"]:checked`);
+        return checked ? checked.id : "";
+      };
+
+      const getCheckboxStatus = (id) => {
+  const checked = document.getElementById(id)?.checked;
+  return `${checked ? "[cbc][/cbc]" : "[cb][/cb]"}`;
+};
+
+function formatDateLong(dateStr) {
+  const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+
+  const [year, month, day] = dateStr.split("-");
+  const dayNum = parseInt(day, 10);
+
+  // Fungsi untuk menambahkan "st", "nd", "rd", atau "th"
+  function getDaySuffix(n) {
+    if (n >= 11 && n <= 13) return "th";
+    switch (n % 10) {
+      case 1: return "st";
+      case 2: return "nd";
+      case 3: return "rd";
+      default: return "th";
+    }
+  }
+
+  const monthName = months[parseInt(month, 10) - 1];
+  const suffix = getDaySuffix(dayNum);
+
+  return `${monthName} ${dayNum}${suffix}, ${year}`;
+}
+
+
+
+
+      const gender = getCheckedValue("gender");
+      const marital = getCheckedValue("marital");
+      const ethnicity = getCheckedValue("ethnicity");
+
+      const checkOption = (value, current) => {
+        if (Array.isArray(current)) {
+          return current.includes(value) ? "[cbc][/cbc]" : "[cb][/cb]";
+        }
+        return value === current ? "[cbc][/cbc]" : "[cb][/cb]";
+      };
+
+            const education = getCheckedValue("education");
+      const major = getCheckedValue("major");
+      const language = getCheckedValue("language");
+      const criminal = getCheckedValue("criminal");
+
+
+
+      const checkMajorOther = () => {
+        if (major === "othermajor") {
+          const input = document.querySelector('#othermajor + label + input');
+          return input?.value.trim() || "N/A";
+        }
+        return "";
+      };
+
+      const checkLangOther = () => {
+        if (language === "otherlang") {
+          const input = document.querySelector('#otherlang + label + input');
+          return input?.value.trim() || "N/A";
+        }
+        return "";
+      };
+
+      const birthdate = get("birthdate");
+      const formattedBirthdate = formatDateLong(birthdate);
+      const section1 = `[divbox=white]
+[center][img-resize=200]https://bit.ly/logsapd[[/img-resize][/center]
+[center][size=130][font=times][b]SAN ANDREAS POLICE DEPARTMENT[/b][/size][/font][/center]
+[divbox=blue]
+[b][color=#FFFFFF]SECTION 1 ─ PERSONAL INFORMATION[/color][/b]
+[/divbox]
+[divbox=white]
+[list=none]
+1.1) YOUR FULL NAME:
+[list=none]
+[b]Firstname:[/b] ${get("firstname")}
+[b]Lastname:[/b] ${get("lastname")}
+[b]Middle:[/b] ${get("middlename")}
+[/list]
+
+1.2) ALIAS / OTHER NAME:
+[list=none]
+${get("alias")}
+[/list]
+
+1.3) GENDER:
+[list=none]
+${checkOption("male", gender)} Male
+${checkOption("female", gender)} Female
+[/list]
+
+1.4) AGE:
+[list=none]
+${get("age")}
+[/list]
+
+1.5) MARITAL STATUS:
+[list=none]
+${checkOption("married", marital)} Married
+${checkOption("commonlaw", marital)} Common-Law
+${checkOption("separated", marital)} Separated
+${checkOption("divorced", marital)} Divorced
+${checkOption("widowed", marital)} Widowed
+${checkOption("single", marital)} Single
+[/list]
+
+1.6) BIRTH PLACE:
+[list=none]
+${get("birthplace")}
+[/list]
+
+1.7) BIRTH DATE:
+[list=none]
+${formattedBirthdate}
+[/list]
+
+1.8) CONTACT NUMBER:
+[list=none]
+${get("contact")}
+[/list]
+
+1.9) EMAIL ADDRESS:
+[list=none]
+${get("email")}
+[/list]
+
+1.10) RESIDENCE ADDRESS:
+[list=none]
+[b]NUMBER AND STREET:[/b] ${get("residence-street")}
+[b]CITY / STATE:[/b] ${get("residence-city")}
+[/list]
+
+1.11) PHYSICAL DESCRIPTION:
+[list=none]
+[b]HEIGHT:[/b] ${get("height")}
+[b]WEIGHT:[/b] ${get("weight")}
+[b]HAIR COLOR:[/b] ${get("haircolor")}
+[b]EYE COLOR:[/b] ${get("eyecolor")}
+[/list]
+
+1.12) ETHNIC GROUP / RACE (mark one)
+[list=none]
+${checkOption("african", ethnicity)} African-American
+${checkOption("hispanic", ethnicity)} Hispanic
+${checkOption("asian", ethnicity)} Asian/Pacific Islander
+${checkOption("caucasian", ethnicity)} Caucasian
+${checkOption("americanindian", ethnicity)} American Indian
+${checkOption("filipino", ethnicity)} Filipino
+${checkOption("middleeastern", ethnicity)} Middle Eastern
+${checkOption("otherethnic", ethnicity)} Other
+[/list]
+[/list]
+[/divbox]`;
+
+
+
+      const section2 = `
+[divbox=blue]
+[b][color=#FFFFFF]SECTION 2 ─ EDUCATIONAL & BACKGROUND INFORMATION[/color][/b]
+[/divbox]
+[divbox=white]
+[list=none]
+2.1) HIGHEST LEVEL OF EDUCATION:
+[list=none]
+${checkOption("highschool", education)} High School, or/and GED
+${checkOption("somecollege", education)} Some College
+${checkOption("associate", education)} Associate's Degree
+${checkOption("bachelor", education)} Bachelor's Degree
+${checkOption("graduate", education)} Graduate Degree
+${checkOption("noneedu", education)} None of the statements apply to me
+[/list]
+
+2.2) COLLEGE MAJOR:
+[list=none]
+${checkOption("criminal", major)} Criminal Justice
+${checkOption("business", major)} Business/Economics
+${checkOption("general", major)} General Ed/Undecided
+${checkOption("engineering", major)} Engineering/Computer
+${checkOption("communication", major)} Communications
+${checkOption("psychology", major)} Psychology/Sociology
+${checkOption("liberal", major)} Liberal Arts
+${checkOption("education", major)} Education
+${checkOption("science", major)} Science
+${checkOption("othermajor", major)} Other: ${checkMajorOther()}
+[/list]
+
+2.3) LANGUAGES OTHER THAN ENGLISH:
+[list=none]
+${checkOption("spanish", language)} Spanish
+${checkOption("russian", language)} Russian
+${checkOption("chinese", language)} Chinese
+${checkOption("japanese", language)} Japanese
+${checkOption("otherlang", language)} Other: ${checkLangOther()}
+${checkOption("none", language)} None
+[/list]
+
+2.4) CRIMINAL RECORD:
+[list=none]
+${checkOption("cleanrecord", criminal)} I have a clean/no criminal record
+${checkOption("ticket", criminal)} I have received a traffic ticket/citation from SAPD that I have paid
+${checkOption("misdemeanor", criminal)} I have been arrested by SAPD on Misdemeanor charges which I have pled Guilty/No Contest
+${checkOption("felony", criminal)} I have been arrested by SAPD on Felony charges which I have pled Guilty/No Contest
+[/list]
+[/list]
+[/divbox]`;
+
+
+
+
+const licenseDriving = document.getElementById("licenseDriving")?.checked;
+const licenseFlying = document.getElementById("licenseFlying")?.checked;
+const licenseFirearms = document.getElementById("licenseFirearms")?.checked;
+
+const licenseStatus = getCheckedValue("licenseStatus");
+const licenseReason = get("licenseReason");
+
+const section3 = `[divbox=white]
+[divbox=blue]
+[b][color=#FFFFFF]SECTION 3 - LICENSES INFORMATION[/color][/b]
+[/divbox]
+[list=none]
+3.1) Please check the valid licenses you possess.
+[list=none]
+${licenseDriving ? "[cbc][/cbc]" : "[cb][/cb]"} Driving License
+${licenseFlying ? "[cbc][/cbc]" : "[cb][/cb]"} Flying License
+${licenseFirearms ? "[cbc][/cbc]" : "[cb][/cb]"} Firearms License
+[/list]
+
+3.2) Have or has any of your license been suspended/revoked?
+[list=none]
+${checkOption("licenseYes", licenseStatus)} Yes, License suspended/revoked: ${licenseStatus === "licenseYes" ? licenseReason : ""}
+${checkOption("licenseNo", licenseStatus)} No
+[/list]
+[/list]
+[/divbox]`;
+
+
+
+
+const licenses = Array.from(document.querySelectorAll('input[name="licenses"]:checked'))
+    .map(el => el.id.replace("license", ""));
+
+
+  const licenseRevokedText = (licenseStatus === 'yes')
+    ? document.querySelector('#licenseYes')?.parentElement?.nextElementSibling?.value.trim() || '(not specified)'
+    : '';
+
+        const disciplineStatus = getCheckedValue("disciplineWork");
+      const disciplineReason = getCheckedValue("disciplineReason");
+
+  const section4 = `[divbox=blue]
+[b][color=#FFFFFF]SECTION 4 - EMPLOYMENT & EXPERIENCE SECTION[/color][/b]
+[/divbox]
+[list=none]
+4.1) Name of Employer: ${get("employerName") || "N/A"}
+4.2) Type of Employment: ${get("employmentType") || "N/A"}
+4.3) Length of Employment: ${get("employmentLength") || "N/A"}
+4.4) Employer: ${get("employerPerson") || "N/A"}
+4.5) Rank/Position, if applicable: ${get("position") || "N/A"}
+4.6) Duties/jobdesk: ${get("duties") || "N/A"}
+
+4.7) Have you ever been disciplined at work? (This includes warnings, suspension, etc)
+[list=none]
+${checkOption("disciplineYes", disciplineStatus)} Yes ${disciplineStatus === "disciplineYes" ? `- ${disciplineReason}` : ""}
+${checkOption("disciplineNo", disciplineStatus)} No
+[/list]
+[/list]
+[/divbox]`;
+
+  const detainedStatus = getCheckedValue('detainedStatus');
+  const detainedExplanation = get('detainedExplanation');
+
+  const policeCallStatus = getCheckedValue('policeCall');
+  const policeCallExplanation = get('policeCallExplanation');
+
+  const drugUseStatus = getCheckedValue('drugUse');
+  const drugUseExplanation = get('drugUseExplanation');
+
+  const cmrStatus = getCheckedValue('hasCmr');
+  const cmrUrl = get('cmrUrlInput');
+
+  const cgcStatus = getCheckedValue('hasCgc');
+  const cgcUrl = get('cgcUrlInput');
+
+const section5 = `[divbox=white]
+[divbox=blue]
+[b][color=#FFFFFF]SECTION 5 - LEGALITY INFORMATION[/color][/b]
+[/divbox]
+[list=none]
+5.1) Have you EVER been detained by law enforcement for investigation, arrested, indicted, charged or convicted of any misdemeanor or felony offense in this state or any other legal jurisdiction?
+[list=none]
+${detainedStatus === "detainedYes" ? "Yes, " + detainedExplanation : "N/A"}
+[/list]
+
+5.2) Have the police ever called you for any reason?
+[list=none]
+${policeCallStatus === "policeCallYes" ? "Yes, " + policeCallExplanation : "N/A"}
+[/list]
+
+5.3) Have you EVER used drugs?
+[list=none]
+${drugUseStatus === "drugYes" ? "Yes, " + drugUseExplanation : "N/A"}
+[/list]
+
+5.4) Please provide your Certificate of Medical Record link below:
+[list=none]
+${cmrStatus === "cmrYes" && cmrUrl !== "N/A" ? `[url=${cmrUrl}]CMR - Firstname Lastname[/url]` : "N/A"}
+[/list]
+
+5.5) Please provide your Certificate of Good Conduct link below:
+[list=none]
+${cgcStatus === "cgcYes" && cgcUrl !== "N/A" ? `[url=${cgcUrl}]CGC - Firstname Lastname[/url]` : "N/A"}
+[/list]
+[/list]
+[/divbox]`;
+
+  const getCharacterList = () => {
+    const inputs = document.querySelectorAll('input[name="previousCharacters[]"]');
+    const listItems = Array.from(inputs)
+      .map((input) => input.value.trim())
+      .filter((val) => val !== "")
+      .map((val) => `[*] ${val}`);
+    return listItems.length ? listItems.join("\n") : "[*] N/A";
+  };
+
+  const section6 = `[divbox=white]
+[divbox=blue]
+[b][color=#FFFFFF]SECTION 6 - OUT OF CHARACTER INFORMATION[/color][/b]
+[/divbox]
+[list=none]
+6.1) Legacy UCP Account:
+[list=none]
+${get("ucpAccount")}
+[/list]
+6.2) Real Life Name:
+[list=none]
+${get("realName")}
+[/list]
+6.3) Real Life Age:
+[list=none]
+${get("realAge")}
+[/list]
+6.4) Real Life City:
+[list=none]
+${get("realCity")}
+[/list]
+6.5) Discord ID :
+[list=none]
+${get("discordId")}
+[/list]
+6.6) How long have you been playing Legacy?
+[list=none]
+${get("legacyDuration")}
+[/list]
+6.7) Where do you play Legacy?
+[list=none]
+${getCheckboxStatus("playHome")} Home
+${getCheckboxStatus("playCafe")} Internet Cafe
+${getCheckedValue("playOther")  ? "[cbc][/cbc] Other: " + get('playPlaceOther') : "[cb][/cb] Other"}
+
+[/list]
+6.8) List all of your previous character name in every account:
+[list]
+${getCharacterList()}
+[/list]
+6.9) List all unedited screenshot of the Admin Record (/mywarns) on all of your characters:
+[list=none]
+[spoiler][img]${get("adminRecordUrl")}[/img][/spoiler]
+[/list]
+6.10) List all unedited /stats screenshot on all of your characters:
+[list=none]
+[spoiler][img]${get("statsUrl")}[/img][/spoiler]
+[/list]
+6.11) Have you ever been in the SAPD previously? If yes, tell us your nickname when you were in SAPD, date of leave, and reason of leave.
+[list=none]
+${getCheckedValue("sapdExperience") === "sapdYes" ? "[cbc][/cbc] Yes, " + get('sapdExperienceDetails') : "[cb][/cb] Yes"}
+${getCheckedValue("sapdExperience") === "sapdNo" ? "[cbc][/cbc] No" : "[cb][/cb] No"}
+[/list]
+6.12) Have you ever been in any faction/families before? If yes, list all the faction that you've been with your nickname while you were part of it, also with date of leave and reason of leave?
+[list=none]
+${getCheckedValue("factionExperience") === "factionYes" ? "[cbc][/cbc] Yes, " + get('factionExperienceDetails') : "[cb][/cb] Yes"}
+${getCheckedValue("factionExperience") === "factionNo" ? "[cbc][/cbc] No" : "[cb][/cb] No"}
+[/list]
+[/list]
+[/divbox]
+`;
+    const section7 = `
+[divbox=white]
+[divbox=blue]
+[b][color=#FFFFFF]SECTION 7 - ADDITIONAL INFORMATION[/color][/b]
+[/divbox]
+[list=none]
+If you have any additional information or explanation about your record, here's your space.
+[list=none]
+${get('recordExplain')}
+[/list]
+[/list]
+[/divbox]
+`;
+
+const today = new Date();
+const formattedDate = `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')}/${today.getFullYear()}`;
+
+    const section8 = `[divbox=white]
+[divbox=blue]
+[b][color=#FFFFFF]SECTION 8 - DECLARATION AGREEMENT[/color][/b]
+[/divbox]
+[list=none]
+[b]DECLARATION AGREEMENT[/b]
+I, ${firstname.value} ${lastname.value} declares that:
+I am willing to serve in the San Andreas Police Department for at least two weeks after graduating from the academy.
+I am willing to serve in theSan Andreas Police Department and will inform the SAPD Recruitment Division, if I have an obstacles during my duty.
+I am willing to obey the San Andreas Police Department rules and regulations.
+I am willing to do not take any job besides of my job in the Los Santos Police Department.
+[b](([/b] I am willing to accept the consequences of 180 minutes jail and a fines of $10,000.00 if violating this contract. [b]))[/b]
+
+[b](([/b] I, hereby OOCly swear that all the information I gave on Out of Character Section is true, and will be polite to every staff of SAPD without seeing their attitudes, ages, and the others, and also I acknowledge that I can be demoted, kicked, suspended or even banned from the server for any reason whether it is IC or OOC. [b]))[/b]
+
+[right]
+San Andreas, ${formattedDate}
+[i]${lastname.value}[/i]
+${firstname.value} ${lastname.value}
+[/right]`
+
+
+      const subject = `${firstname.value} ${lastname.value}`;
+      const result = section1 + section2 + section3 + section4 + section5 + section6 + section7 + section8; // nanti ditambah + section2 + section3 ...
+      document.getElementById("subject").value = subject;
+      document.getElementById("result").value = result;
+
+
+    }
+
+
+
+  function validateAndGenerate() {
+        // Helper: ambil nilai input
+    const getValue = (id) => document.getElementById(id)?.value.trim();
+    const isChecked = (name) => !!document.querySelector(`input[name="${name}"]:checked`);
+
+    const getCheckedValue = (name) => {
+      const checked = document.querySelector(`input[name="${name}"]:checked`);
+      return checked ? checked.value : null;
+    };
+
+    const getCheckedValues = (name) =>
+      Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map((el) => el.value.trim());
+    const getAllValues = (name) =>
+      Array.from(document.querySelectorAll(`[name="${name}"]`)).map((el) => el.value.trim()).filter(Boolean);
+
+    // Ambil semua input dari Personal Information
+    const firstname = getValue('firstname');
+    const middlename = getValue('middlename');
+    const lastname = getValue('lastname');
+    const alias = getValue('alias');
+    const age = getValue('age');
+    const birthplace = getValue('birthplace');
+    const birthdate = getValue('birthdate');
+    const contact = getValue('contact');
+    const email = getValue('email');
+    const street = getValue('residence-street');
+    const city = getValue('residence-city');
+    const height = getValue('height');
+    const weight = getValue('weight');
+    const haircolor = getValue('haircolor');
+    const eyecolor = getValue('eyecolor');
+
+    // Validasi field wajib
+    if (!firstname) return alert("Section I - Firstname is required.");
+    if (!lastname) return alert("Section I - Lastname is required.");
+    if (!age) return alert("Section I - Age is required.");
+    if (!/^\d+$/.test(age)) return alert("Section I - Age must be a number without letters.");
+    if (+age < 18) return alert("Section I - You must be at least 18 years old.");
+
+    if (!isChecked('gender')) return alert("Section I - Gender is required.");
+    if (!isChecked('marital')) return alert("Section I - Marital status is required.");
+    if (!birthplace) return alert("Section I - Birthplace is required.");
+    if (!birthdate) return alert("Section I - Birthdate is required.");
+    if (!contact) return alert("Section I - Contact number is required.");
+    if (!email) return alert("Section I - Email address is required.");
+    if (!street) return alert("Section I - Street address is required.");
+    if (!city) return alert("Section I - City/State is required.");
+    if (!height) return alert("Section I - Height is required.");
+    if (!weight) return alert("Section I - Weight is required.");
+    if (!haircolor) return alert("Section I - Hair color is required.");
+    if (!eyecolor) return alert("Section I - Eye color is required.");
+    if (!isChecked('ethnicity')) return alert("Section I - Ethnic group is required.");
+
+
+    const licenseCheckboxes = document.querySelectorAll('input[name="licenses"]:checked');
+    if (licenseCheckboxes.length === 0) {
+      return alert('Section III - Please check at least one valid license you possess.');
+    }
+
+
+
+    // Jika semua valid, baru generate
+
+    // Bagian IV - Employment & Experience
+    const employerName = getValue('employerName');
+    const employmentType = getValue('employmentType');
+    const employmentLength = getValue('employmentLength');
+    const employerPerson = getValue('employerPerson');
+    const rankPosition = getValue('position');
+    const jobdesk = getValue('duties');
+    const disciplineStatus = getCheckedValue('disciplineWork'); // "Yes" atau "No"
+    const disciplineReason = getValue('disciplineReason');
+
+
+
+    // Validasi
+    if (!employerName) {
+      alert("Please enter your employer name.");
+      return;
+    }
+    if (!employmentType) {
+      alert("Section IV - Please select your employment type.");
+      return;
+    }
+    if (!employmentLength) {
+      alert("Section IV - Please enter the length of your employment.");
+      return;
+    }
+    if (!employerPerson) {
+      alert("Section IV - Please enter your employer's contact person.");
+      return;
+    }
+    if (!rankPosition) {
+      alert("Section IV - Please enter your rank or position.");
+      return;
+    }
+    if (!jobdesk) {
+      alert("Section IV - Please describe your job responsibilities.");
+      return;
+    }
+    if (!disciplineStatus) {
+      alert("Section IV - Please indicate whether you had any disciplinary action.");
+      return;
+    }
+    if (disciplineStatus === 'yes' && !disciplineReason) {
+      alert("Section IV - Please explain the disciplinary action taken.");
+      return;
+    }
+
+    // Bagian V - Legality Information
+    const detainedStatus = getCheckedValue('detainedStatus');
+    const detainedExplanation = getValue('detainedExplanation');
+
+    const policeCallStatus = getCheckedValue('policeCall');
+    const policeCallExplanation = getValue('policeCallExplanation');
+
+    const drugUseStatus = getCheckedValue('drugUse');
+    const drugUseExplanation = getValue('drugUseExplanation');
+
+
+    const statsImg = document.getElementById("statsUrl").value.trim();
+    const adminImg = document.getElementById("adminRecordUrl").value.trim();
+
+
+
+    if (!adminImg) {
+      alert("Section V - Please upload your Admin Record Screenshot.");
+      return;
+    }
+
+        if (!statsImg) {
+      alert("Section V - Please upload your Stats Screenshot.");
+      return;
+    }
+
+
+    const hasCmr = getCheckedValue('hasCmr');
+    const cmrUrl = getValue('cmrUrlInput');
+
+    const hasCgc = getCheckedValue('hasCgc');
+    const cgcUrl = getValue('cgcUrlInput');
+
+
+    // Validasi
+    if (!detainedStatus) {
+      alert("Section V - Please indicate if you have ever been detained, arrested, indicted, or convicted.");
+      return;
+    }
+    if (detainedStatus === 'yes' && !detainedExplanation) {
+      alert("Section V - Please explain the incident related to your detention or arrest.");
+      return;
+    }
+
+    if (!policeCallStatus) {
+      alert("Section V - Please indicate if the police have ever called you.");
+      return;
+    }
+    if (policeCallStatus === 'yes' && !policeCallExplanation) {
+      alert("Section V - Please provide an explanation for the police call.");
+      return;
+    }
+
+    if (!drugUseStatus) {
+      alert("Section V - Please indicate if you have ever used drugs.");
+      return;
+    }
+    if (drugUseStatus === 'yes' && !drugUseExplanation) {
+      alert("Section V - Please explain your drug use.");
+      return;
+    }
+
+    if (!hasCmr) {
+      alert("Section V - Please indicate whether you have a Certificate of Medical Record.");
+      return;
+    }
+    if (hasCmr == 'yes' && !cmrUrl) {
+      alert("Section V - Please provide the link to your Certificate of Medical Record.");
+      return;
+    }
+
+    if (!hasCgc) {
+      alert("Section V - Please indicate whether you have a Certificate of Good Conduct.");
+      return;
+    }
+    if (hasCgc == 'yes' && !cgcUrl) {
+      alert("Section V - Please provide the link to your Certificate of Good Conduct.");
+      return;
+    }
+
+    const ucpAccount = getValue("ucpAccount");
+  if (!ucpAccount) {
+    alert("Section VI - Please enter your Legacy UCP account.");
+    return false;
+  }
+
+  // 6.2
+  const realName = getValue("realName");
+  if (!realName) {
+    alert("Section VI - Please enter your real name.");
+    return false;
+  }
+
+  // 6.3
+  const realAge = getValue("realAge");
+  if (!realAge || isNaN(realAge) || parseInt(realAge) < 10) {
+    alert("Section VI - Please enter a valid real age (>= 10).");
+    return false;
+  }
+
+  // 6.4
+  const realCity = getValue("realCity");
+  if (!realCity) {
+    alert("Section VI - Please enter your real life city.");
+    return false;
+  }
+
+  // 6.5
+  const discordId = getValue("discordId");
+  if (!discordId || !/^\d{8,}$/.test(discordId)) {
+    alert("Section VI - Please enter a valid Discord ID (numbers only).");
+    return false;
+  }
+
+  // 6.6
+  const legacyDuration = getValue("legacyDuration");
+  if (!legacyDuration) {
+    alert("Section VI - Please specify how long you've been playing Legacy.");
+    return false;
+  }
+
+  // 6.7
+  const playPlaces = getCheckedValues("playPlace[]");
+  const playPlaceOther = getValue("playPlaceOther");
+  if (playPlaces.length === 0) {
+    alert("Section VI - Please select where you usually play Legacy.");
+    return false;
+  }
+  if (playPlaces.includes("Other") && !playPlaceOther) {
+    alert("Section VI - Please specify the 'Other' place you play from.");
+    return false;
+  }
+
+  // 6.8
+  const previousCharacters = getAllValues("previousCharacters[]");
+  if (previousCharacters.length === 0) {
+    alert("Section VI - Please enter at least one previous character name.");
+    return false;
+  }
+
+  // 6.9
+  const adminRecordUrl = getValue("adminRecordUrl");
+      alert(adminRecordUrl)
+
+  if (!adminRecordUrl) {
+    alert("Section VI - Please upload your Admin Record screenshot.");
+    return false;
+  }
+
+  // 6.10
+  const statsUrl = getValue("statsUrl");
+  if (!statsUrl) {
+    alert("Section VI - Please upload your /stats screenshot.");
+    return false;
+  }
+
+  // 6.11
+  const sapdExperience = getCheckedValue("sapdExperience");
+  const sapdDetails = getValue("sapdExperienceDetails");
+  if (!sapdExperience) {
+    alert("Section VI - Please indicate your SAPD experience.");
+    return false;
+  }
+  if (sapdExperience === "yes" && !sapdDetails) {
+    alert("Section VI - Please provide details about your SAPD experience.");
+    return false;
+  }
+
+  // 6.12
+  const factionExperience = getCheckedValue("factionExperience");
+  const factionDetails = getValue("factionExperienceDetails");
+  if (!factionExperience) {
+    alert("Section VI - Please indicate your faction/family experience.");
+    return false;
+  }
+  if (factionExperience === "yes" && !factionDetails) {
+    alert("Section VI - Please provide details about your faction/family experience.");
+    return false;
+  }
+
+
+
+    generateBBCode();
+  }
+
+    </script>
+
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+
+    <script src="../assets/js/main.js"></script>
+
+    <!-- Page JS -->
+
+    <!-- Place this tag before closing body tag for github widget button. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </body>
+
+</html>
