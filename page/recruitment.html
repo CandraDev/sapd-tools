@@ -47,7 +47,7 @@
     <link rel="stylesheet"
       href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
-      <style>
+    <style>
         .skeleton-loader {
           width: 300px;
           height: 200px;
@@ -238,7 +238,8 @@
                                 <label for="middlename"
                                   class="form-label">Middle</label>
                                 <input type="text" id="middlename"
-                                  class="form-control" placeholder="(Optional) Ex: Howard">
+                                  class="form-control"
+                                  placeholder="(Optional) Ex: Howard">
                               </div>
                               <div class="col-md-4">
                                 <label for="lastname"
@@ -253,7 +254,8 @@
                                 <label for="alias" class="form-label">Alias /
                                   Other Name</label>
                                 <input type="text" id="alias"
-                                  class="form-control" placeholder="(Optional) Ex: Mave">
+                                  class="form-control"
+                                  placeholder="(Optional) Ex: Mave">
                               </div>
 
                               <!-- Gender -->
@@ -901,7 +903,8 @@
                                   <div class="mt-1">
                                     <input type="text"
                                       class="form-control form-control-sm"
-                                      name="detainedExplanation" id="detainedExplanation"
+                                      name="detainedExplanation"
+                                      id="detainedExplanation"
                                       placeholder="Ex: Detained in 2022 for investigation on a burglary case." />
                                   </div>
                                 </div>
@@ -1155,7 +1158,6 @@
                               </div>
                             </div>
 
-                            <!-- 6.8 Previous Character Names -->
                             <div class="col-12 mb-3">
                               <label class="form-label">List all of your
                                 previous character names in every
@@ -1167,79 +1169,6 @@
                                   Character</button>
                               </div>
                               <div id="character-list">
-                                <div class="input-group mb-2 character-entry">
-                                  <input type="text" name="previousCharacters[]"
-                                    class="form-control form-control-sm"
-                                    placeholder="Ex: FRSS ─ Maverick Vincenzo">
-                                </div>
-                              </div>
-                            </div>
-
-                            <!-- 6.9 Admin Record Screenshot -->
-                            <div class="col-12 mb-3">
-                              <label class="form-label">
-                                Upload unedited screenshots of Admin Record
-                                (/mywarns):
-                              </label>
-
-                              <!-- Preview Gambar di Tengah -->
-                              <div class="d-flex justify-content-center align-items-center">
-                                <img id="adminRecordPreview" src style="max-width: 300px; max-height: 200px; display: none; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);" />
-                                <div id="adminRecordSkeleton" class="skeleton-loader" style="display: none;"></div>
-                              </div>
-
-
-                              <!-- Hidden input buat nyimpen URL -->
-                              <input type="hidden" id="adminRecordUrl"
-                                name="adminRecordUrl" />
-
-                              <!-- File Input (Hidden) -->
-                              <input type="file" id="adminRecordFile"
-                                accept="image/*" hidden />
-
-                              <!-- Tombol Pilih File dan Upload -->
-                              <div class="d-flex gap-2 mt-3">
-                                <button
-                                  class="btn btn-outline-secondary flex-fill"
-                                  type="button"
-                                  onclick="document.getElementById('adminRecordFile').click()">Pilih
-                                  File</button>
-                                <button class="btn btn-primary flex-fill"
-                                  type="button"
-                                  onclick="uploadImgur('adminRecordFile', 'adminRecordUrl', 'adminRecordPreview')">Upload</button>
-                              </div>
-                            </div>
-
-                            <!-- 6.10 Stats Screenshot -->
-                            <div class="col-12 mb-3">
-                              <label class="form-label">Upload unedited /stats
-                                screenshots:</label>
-
-                              <!-- Preview Gambar -->
-                              <div class="d-flex justify-content-center align-items-center mb-3">
-                                <img id="statsPreview" src style="max-width: 300px; max-height: 200px; display: none; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);" />
-                                <div id="statsSkeleton" class="skeleton-loader" style="display: none;"></div>
-                              </div>
-
-
-                              <!-- Hidden input buat nyimpen URL -->
-                              <input type="hidden" id="statsUrl"
-                                name="statsUrl" />
-
-                              <!-- File input -->
-                              <input type="file" id="statsFile" accept="image/*"
-                                hidden />
-
-                              <!-- Tombol Pilih File & Upload -->
-                              <div class="d-flex gap-2 mt-3">
-                                <button
-                                  class="btn btn-outline-secondary flex-fill"
-                                  type="button"
-                                  onclick="document.getElementById('statsFile').click()">Pilih
-                                  File</button>
-                                <button class="btn btn-primary flex-fill"
-                                  type="button"
-                                  onclick="uploadImgur('statsFile', 'statsUrl', 'statsPreview')">Upload</button>
                               </div>
                             </div>
 
@@ -1414,44 +1343,59 @@
         }
       });
     </script>
-
     <script>
     $(document).ready(function () {
-      function updateRemoveButtons() {
-        const total = $('#character-list .character-entry').length;
-        $('#character-list .remove-character').remove(); // remove all first
-        if (total > 1) {
-          // Tambahkan tombol hapus hanya jika jumlah input > 1
-          $('#character-list .character-entry').each(function () {
-            if ($(this).find('.remove-character').length === 0) {
-              $(this).append(`
+      function generateCharacterEntry() {
+        const timestamp = Date.now(); // Untuk ID unik
+        return `
+          <div class="character-entry border rounded p-3 mb-3">
+            <div class="input-group mb-2">
+              <input type="text" name="previousCharacters[]" class="form-control form-control-sm" placeholder="Ex: FRSS ─ Maverick Vincenzo">
               <button type="button" class="btn btn-sm btn-outline-danger ms-2 remove-character">🗑</button>
-            `);
-            }
-          });
-        }
+            </div>
+
+            <!-- Admin Record Upload -->
+            <label class="form-label">Upload unedited Admin Record (/mywarns):</label>
+            <div class="d-flex justify-content-center align-items-center mb-2">
+              <img id="adminRecordPreview-${timestamp}" style="max-width:300px; max-height:200px; display:none; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.2);" />
+              <div id="adminRecordSkeleton-${timestamp}" class="skeleton-loader" style="display:none;"></div>
+            </div>
+            <input type="hidden" id="adminRecordUrl-${timestamp}" name="adminRecordUrls[]" />
+            <input type="file" id="adminRecordFile-${timestamp}" accept="image/*" hidden />
+            <div class="d-flex gap-2 mb-3">
+              <button type="button" class="btn btn-outline-secondary flex-fill" onclick="document.getElementById('adminRecordFile-${timestamp}').click()">Pilih File</button>
+              <button type="button" class="btn btn-primary flex-fill" onclick="uploadImgur('adminRecordFile-${timestamp}', 'adminRecordUrl-${timestamp}', 'adminRecordPreview-${timestamp}')">Upload</button>
+            </div>
+
+            <!-- Stats Upload -->
+            <label class="form-label">Upload unedited /stats:</label>
+            <div class="d-flex justify-content-center align-items-center mb-2">
+              <img id="statsPreview-${timestamp}" style="max-width:300px; max-height:200px; display:none; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.2);" />
+              <div id="statsSkeleton-${timestamp}" class="skeleton-loader" style="display:none;"></div>
+            </div>
+            <input type="hidden" id="statsUrl-${timestamp}" name="statsUrls[]" />
+            <input type="file" id="statsFile-${timestamp}" accept="image/*" hidden />
+            <div class="d-flex gap-2">
+              <button type="button" class="btn btn-outline-secondary flex-fill" onclick="document.getElementById('statsFile-${timestamp}').click()">Pilih File</button>
+              <button type="button" class="btn btn-primary flex-fill" onclick="uploadImgur('statsFile-${timestamp}', 'statsUrl-${timestamp}', 'statsPreview-${timestamp}')">Upload</button>
+            </div>
+          </div>
+        `;
       }
 
       $('#add-character').click(function () {
-        const newInput = `
-        <div class="input-group mb-2 character-entry">
-          <input type="text" name="previousCharacters[]" class="form-control form-control-sm" placeholder="Ex: UCPName ─ Another Character">
-        </div>
-      `;
-        $('#character-list').append(newInput);
-        updateRemoveButtons();
+        $('#character-list').append(generateCharacterEntry());
       });
 
-      // Delegated remove handler
       $('#character-list').on('click', '.remove-character', function () {
         $(this).closest('.character-entry').remove();
-        updateRemoveButtons();
       });
 
-      // Initial call
-      updateRemoveButtons();
+      // Load satu entri awal saat halaman dibuka
+      $('#character-list').html(generateCharacterEntry());
     });
   </script>
+
     <script>
       async function uploadImgur(fileInputId, hiddenInputId, previewImgId) {
         const fileInput = document.getElementById(fileInputId);
@@ -1842,14 +1786,46 @@ ${cgcStatus === "cgcYes" && cgcUrl !== "N/A" ? `[url=${cgcUrl}]CGC - Firstname L
 [/list]
 [/divbox]`;
 
-  const getCharacterList = () => {
+// Ambil daftar karakter
+  function getCharacterList() {
     const inputs = document.querySelectorAll('input[name="previousCharacters[]"]');
-    const listItems = Array.from(inputs)
-      .map((input) => input.value.trim())
-      .filter((val) => val !== "")
-      .map((val) => `[*] ${val}`);
-    return listItems.length ? listItems.join("\n") : "[*] N/A";
-  };
+    let result = "";
+    inputs.forEach(input => {
+      const val = input.value.trim();
+      if (val) result += `[*] ${val}\n`;
+    });
+    return result;
+  }
+
+  // console.log(getCharacterList());
+
+  // Ambil semua URL admin record (mywarns)
+  function getAdminUrls() {
+    const urls = document.querySelectorAll('input[name="adminRecordUrls[]"]');
+    let result = "";
+    urls.forEach(url => {
+      const val = url.value.trim();
+      if (val) result += `[img]${val}[/img]\n`;
+    });
+    return result;
+  }
+
+    console.log(getAdminUrls());
+
+
+  // Ambil semua URL stats
+  function getStatsUrls() {
+    const urls = document.querySelectorAll('input[name="statsUrls[]"]');
+    let result = "";
+    urls.forEach(url => {
+      const val = url.value.trim();
+      if (val) result += `[img]${val}[/img]\n`;
+    });
+    return result;
+  }
+
+    console.log(getStatsUrls());
+
 
   const section6 = `[divbox=white]
 [divbox=blue]
@@ -1889,16 +1865,13 @@ ${getCheckedValue("playOther")  ? "[cbc][/cbc] Other: " + get('playPlaceOther') 
 [/list]
 6.8) List all of your previous character name in every account:
 [list]
-${getCharacterList()}
-[/list]
+${getCharacterList()}[/list]
 6.9) List all unedited screenshot of the Admin Record (/mywarns) on all of your characters:
 [list=none]
-[spoiler][img]${get("adminRecordUrl")}[/img][/spoiler]
-[/list]
+[spoiler]${getAdminUrls()}[/spoiler][/list]
 6.10) List all unedited /stats screenshot on all of your characters:
 [list=none]
-[spoiler][img]${get("statsUrl")}[/img][/spoiler]
-[/list]
+[spoiler]${getStatsUrls()}[/spoiler][/list]
 6.11) Have you ever been in the SAPD previously? If yes, tell us your nickname when you were in SAPD, date of leave, and reason of leave.
 [list=none]
 ${getCheckedValue("sapdExperience") === "sapdYes" ? "[cbc][/cbc] Yes, " + get('sapdExperienceDetails') : "[cb][/cb] Yes"}
@@ -2081,20 +2054,8 @@ ${firstname.value} ${lastname.value}
     const drugUseExplanation = getValue('drugUseExplanation');
 
 
-    const statsImg = document.getElementById("statsUrl").value.trim();
-    const adminImg = document.getElementById("adminRecordUrl").value.trim();
 
 
-
-    if (!adminImg) {
-      alert("Section V - Please upload your Admin Record Screenshot.");
-      return;
-    }
-
-        if (!statsImg) {
-      alert("Section V - Please upload your Stats Screenshot.");
-      return;
-    }
 
 
     const hasCmr = getCheckedValue('hasCmr');
@@ -2210,21 +2171,6 @@ ${firstname.value} ${lastname.value}
     return false;
   }
 
-  // 6.9
-  const adminRecordUrl = getValue("adminRecordUrl");
-      alert(adminRecordUrl)
-
-  if (!adminRecordUrl) {
-    alert("Section VI - Please upload your Admin Record screenshot.");
-    return false;
-  }
-
-  // 6.10
-  const statsUrl = getValue("statsUrl");
-  if (!statsUrl) {
-    alert("Section VI - Please upload your /stats screenshot.");
-    return false;
-  }
 
   // 6.11
   const sapdExperience = getCheckedValue("sapdExperience");
