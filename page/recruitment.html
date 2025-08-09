@@ -406,7 +406,7 @@
                                 <label for="eyecolor" class="form-label">Eye
                                   Color</label>
                                 <input type="text" id="eyecolor"
-                                  class="form-control" placeholder="Ex: Blue">
+                                  class="form-control" placeholder="Ex: Bluee">
                               </div>
 
                               <!-- Ethnic Group -->
@@ -1536,18 +1536,17 @@ function formatDateLong(dateStr) {
       const birthdate = get("birthdate");
       const formattedBirthdate = formatDateLong(birthdate);
       const section1 = `[divbox=white]
-[center][img-resize=200]https://bit.ly/logsapd[[/img-resize][/center]
-[center][size=130][font=times][b]SAN ANDREAS POLICE DEPARTMENT[/b][/size][/font][/center]
-[divbox=blue]
+[center][img-resize=700]https://imgur.com/q8nlCGI.png[/img-resize][/center]
+[divbox=#000080]
 [b][color=#FFFFFF]SECTION 1 ─ PERSONAL INFORMATION[/color][/b]
 [/divbox]
 [divbox=white]
 [list=none]
 1.1) YOUR FULL NAME:
 [list=none]
-[b]Firstname:[/b] ${get("firstname")}
-[b]Lastname:[/b] ${get("lastname")}
-[b]Middle:[/b] ${get("middlename")}
+Firstname: ${get("firstname")}
+Lastname: ${get("lastname")}
+Middle: ${get("middlename")}
 [/list]
 
 1.2) ALIAS / OTHER NAME:
@@ -1598,16 +1597,16 @@ ${get("email")}
 
 1.10) RESIDENCE ADDRESS:
 [list=none]
-[b]NUMBER AND STREET:[/b] ${get("residence-street")}
-[b]CITY / STATE:[/b] ${get("residence-city")}
+NUMBER AND STREET: ${get("residence-street")}
+CITY / STATE: ${get("residence-city")}
 [/list]
 
 1.11) PHYSICAL DESCRIPTION:
 [list=none]
-[b]HEIGHT:[/b] ${get("height")}
-[b]WEIGHT:[/b] ${get("weight")}
-[b]HAIR COLOR:[/b] ${get("haircolor")}
-[b]EYE COLOR:[/b] ${get("eyecolor")}
+HEIGHT: ${get("height")}
+WEIGHT: ${get("weight")}
+HAIR COLOR: ${get("haircolor")}
+EYE COLOR: ${get("eyecolor")}
 [/list]
 
 1.12) ETHNIC GROUP / RACE (mark one)
@@ -1622,15 +1621,16 @@ ${checkOption("middleeastern", ethnicity)} Middle Eastern
 ${checkOption("otherethnic", ethnicity)} Other
 [/list]
 [/list]
+[/divbox]
 [/divbox]`;
 
 
 
       const section2 = `
-[divbox=blue]
+[divbox=white]
+[divbox=#000080]
 [b][color=#FFFFFF]SECTION 2 ─ EDUCATIONAL & BACKGROUND INFORMATION[/color][/b]
 [/divbox]
-[divbox=white]
 [list=none]
 2.1) HIGHEST LEVEL OF EDUCATION:
 [list=none]
@@ -1687,7 +1687,7 @@ const licenseStatus = getCheckedValue("licenseStatus");
 const licenseReason = get("licenseReason");
 
 const section3 = `[divbox=white]
-[divbox=blue]
+[divbox=#000080]
 [b][color=#FFFFFF]SECTION 3 - LICENSES INFORMATION[/color][/b]
 [/divbox]
 [list=none]
@@ -1720,7 +1720,9 @@ const licenses = Array.from(document.querySelectorAll('input[name="licenses"]:ch
         const disciplineStatus = getCheckedValue("disciplineWork");
       const disciplineReason = getCheckedValue("disciplineReason");
 
-  const section4 = `[divbox=blue]
+  const section4 = `
+[divbox=white]
+[divbox=#000080]
 [b][color=#FFFFFF]SECTION 4 - EMPLOYMENT & EXPERIENCE SECTION[/color][/b]
 [/divbox]
 [list=none]
@@ -1755,7 +1757,7 @@ ${checkOption("disciplineNo", disciplineStatus)} No
   const cgcUrl = get('cgcUrlInput');
 
 const section5 = `[divbox=white]
-[divbox=blue]
+[divbox=#000080]
 [b][color=#FFFFFF]SECTION 5 - LEGALITY INFORMATION[/color][/b]
 [/divbox]
 [list=none]
@@ -1828,7 +1830,7 @@ ${cgcStatus === "cgcYes" && cgcUrl !== "N/A" ? `[url=${cgcUrl}]CGC - Firstname L
 
 
   const section6 = `[divbox=white]
-[divbox=blue]
+[divbox=#000080]
 [b][color=#FFFFFF]SECTION 6 - OUT OF CHARACTER INFORMATION[/color][/b]
 [/divbox]
 [list=none]
@@ -1887,7 +1889,7 @@ ${getCheckedValue("factionExperience") === "factionNo" ? "[cbc][/cbc] No" : "[cb
 `;
     const section7 = `
 [divbox=white]
-[divbox=blue]
+[divbox=#000080]
 [b][color=#FFFFFF]SECTION 7 - ADDITIONAL INFORMATION[/color][/b]
 [/divbox]
 [list=none]
@@ -1903,7 +1905,7 @@ const today = new Date();
 const formattedDate = `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')}/${today.getFullYear()}`;
 
     const section8 = `[divbox=white]
-[divbox=blue]
+[divbox=#000080]
 [b][color=#FFFFFF]SECTION 8 - DECLARATION AGREEMENT[/color][/b]
 [/divbox]
 [list=none]
@@ -1997,51 +1999,6 @@ ${firstname.value} ${lastname.value}
 
     // Jika semua valid, baru generate
 
-    // Bagian IV - Employment & Experience
-    const employerName = getValue('employerName');
-    const employmentType = getValue('employmentType');
-    const employmentLength = getValue('employmentLength');
-    const employerPerson = getValue('employerPerson');
-    const rankPosition = getValue('position');
-    const jobdesk = getValue('duties');
-    const disciplineStatus = getCheckedValue('disciplineWork'); // "Yes" atau "No"
-    const disciplineReason = getValue('disciplineReason');
-
-
-
-    // Validasi
-    if (!employerName) {
-      alert("Please enter your employer name.");
-      return;
-    }
-    if (!employmentType) {
-      alert("Section IV - Please select your employment type.");
-      return;
-    }
-    if (!employmentLength) {
-      alert("Section IV - Please enter the length of your employment.");
-      return;
-    }
-    if (!employerPerson) {
-      alert("Section IV - Please enter your employer's contact person.");
-      return;
-    }
-    if (!rankPosition) {
-      alert("Section IV - Please enter your rank or position.");
-      return;
-    }
-    if (!jobdesk) {
-      alert("Section IV - Please describe your job responsibilities.");
-      return;
-    }
-    if (!disciplineStatus) {
-      alert("Section IV - Please indicate whether you had any disciplinary action.");
-      return;
-    }
-    if (disciplineStatus === 'yes' && !disciplineReason) {
-      alert("Section IV - Please explain the disciplinary action taken.");
-      return;
-    }
 
     // Bagian V - Legality Information
     const detainedStatus = getCheckedValue('detainedStatus');
