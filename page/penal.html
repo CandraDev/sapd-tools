@@ -61,10 +61,21 @@
 
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
 
+    <meta http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <script src="../assets/js/config.js"></script>
   </head>
 
   <body>
+    <script>
+    // Cek apakah user sudah memasukkan password benar di sesi ini
+      var pass = prompt("Masukan password tools ini! \n Password cek deskripsi WA Group SAPD.");
+      if (pass !== "sapd"){
+        window.location.href = "https://candradev.github.io/sapd-tools/page/dashboard.html";
+      }
+  </script>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
