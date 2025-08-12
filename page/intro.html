@@ -82,9 +82,20 @@
 
     <script src="../assets/js/config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <meta http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
   </head>
 
   <body>
+    <script>
+    // Cek apakah user sudah memasukkan password benar di sesi ini
+      var pass = prompt("Masukan password tools ini!");
+      if (pass !== "sapd"){
+        window.location.href = "file:///D:/projects/web/sapd-tools/page/dashboard.html";
+      }
+  </script>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
@@ -388,7 +399,8 @@
                                   <a
                                     href="https://www.thecalculatorsite.com/conversions/common/kg-to-stones-pounds.php"
                                     target="_blank"
-                                    class="text-decoration-underline">Kg to Lbs Converter</a>
+                                    class="text-decoration-underline">Kg to Lbs
+                                    Converter</a>
                                 </div>
                                 <input type="text" id="weight"
                                   class="form-control"
